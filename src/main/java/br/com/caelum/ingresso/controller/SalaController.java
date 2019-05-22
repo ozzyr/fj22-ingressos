@@ -37,7 +37,6 @@ public class SalaController {
        
         return modelAndView;
     }
-
  
     @PostMapping("/admin/sala")
     @Transactional
@@ -83,7 +82,6 @@ public class SalaController {
 
         return modelAndView;
     }
-
 
     @DeleteMapping("/admin/sala/{id}")
     @ResponseBody

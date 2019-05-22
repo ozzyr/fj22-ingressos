@@ -1,5 +1,7 @@
 package br.com.caelum.ingresso.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,18 +29,19 @@ public class SessaoController {
     private SessaoDao sessaoDao;
 
     @GetMapping("/admin/sessao")
-    public ModelAndView form(@RequestParam("salaId") Integer salaId) {
+    public ModelAndView form(@RequestParam("salaId") Integer salaId,SessaoForm form) {
         ModelAndView modelAndView = new ModelAndView("sessao/sessao");
 
         modelAndView.addObject("sala", salaDao.findOne(salaId));
         modelAndView.addObject("filmes", filmeDao.findAll());
+        modelAndView.addObject("form",form);
 
         return modelAndView;
     }
 
     @PostMapping(value = "/admin/sessao")
     @Transactional
-    public ModelAndView salva(@Validated SessaoForm form) {
+    public ModelAndView salva(@Valid SessaoForm form) {
         Sessao sessao = form.toSessao(salaDao, filmeDao);
 
         sessaoDao.save(sessao);
