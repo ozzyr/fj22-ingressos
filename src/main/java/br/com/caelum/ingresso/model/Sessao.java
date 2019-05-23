@@ -2,13 +2,12 @@ package br.com.caelum.ingresso.model;
 
 import java.time.LocalTime;
 import javax.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity 
 public class Sessao {
 	    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
     
     private LocalTime horario;
