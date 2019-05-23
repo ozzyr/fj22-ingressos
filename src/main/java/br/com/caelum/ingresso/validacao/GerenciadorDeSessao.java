@@ -32,7 +32,6 @@ public class GerenciadorDeSessao {
 		}
 			
 		return false;
-			
 	}
 	
 	private boolean horariosIsConflitante(Sessao sessaoExistente, Sessao sessaoNova) {
