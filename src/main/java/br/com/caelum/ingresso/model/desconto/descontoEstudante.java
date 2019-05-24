@@ -1,0 +1,13 @@
+package br.com.caelum.ingresso.model.desconto;
+
+import java.math.BigDecimal;
+
+public class descontoEstudante implements Desconto {
+
+	private BigDecimal metade = new BigDecimal("2.0");
+
+	@Override
+	public BigDecimal aplicarDescontoSobre(BigDecimal precoOriginal) {
+		return precoOriginal.divide(metade);
+	}
+}
