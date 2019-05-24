@@ -61,13 +61,7 @@ public class SessaoForm{
         return this.salaId;
     }
     
-    
-    public SessaoForm(Integer salaId, SessaoForm form) {
-		super();
-		this.salaId = salaId;
-		
-	}
-    
+       
 	public Sessao toSessao(SalaDao salaDao, FilmeDao filmeDao){
         Filme filme = filmeDao.findOne(filmeId);
         Sala sala = salaDao.findOne(salaId);
