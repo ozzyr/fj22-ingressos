@@ -1,8 +1,8 @@
-package br.com.caelum.ingresso.ingresso;
+package br.com.caelum.ingresso.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
-import br.com.caelum.ingresso.model.Sessao;
 import br.com.caelum.ingresso.model.desconto.Desconto;
 
 public class Ingresso {
@@ -18,17 +18,20 @@ public class Ingresso {
 		this.sessao = sessao;
 	}
 
-
 	public BigDecimal getPreco() {
-		return preco;
+	
+		return preco.setScale(2, RoundingMode.HALF_UP);
+	
 	}
 
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
 	
-	public Ingresso(Sessao sessao, Desconto desconto) {
+	
+	
+	public Ingresso(Sessao sessao, Desconto tipoDeDesconto) {
 		this.sessao = sessao;
-		this.preco = desconto.aplicarDescontoSobre(sessao.getPreco());
+		this.preco = tipoDeDesconto.aplicarDescontoSobre(sessao.getPreco());
 	}
 }
