@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.com.caelum.ingresso.model.Sessao;
 import br.com.caelum.ingresso.model.Sala;
+import br.com.caelum.ingresso.model.Filme;
 
 @Repository
 public class SessaoDao {
@@ -22,6 +23,13 @@ public class SessaoDao {
     public List<Sessao> buscaSessoesDaSala(Sala sala){
         return manager.createQuery("select s from Sessao s where s.sala = :sala",Sessao.class)
                       .setParameter("sala",sala)
+                      .getResultList();
+                                      
+    }
+    
+    public List<Sessao> buscaSessoesDoFilme(Filme filme){
+        return manager.createQuery("select s from Sessao s where s.filme = :filme",Sessao.class)
+                      .setParameter("filme",filme)
                       .getResultList();
                                       
     }

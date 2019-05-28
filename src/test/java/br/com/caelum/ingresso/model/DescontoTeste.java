@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import br.com.caelum.ingresso.model.desconto.DescontoParaBancos;
 import br.com.caelum.ingresso.model.desconto.SemDesconto;
-import br.com.caelum.ingresso.model.desconto.descontoEstudante;
+import br.com.caelum.ingresso.model.desconto.DescontoEstudante;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,7 +18,6 @@ public class DescontoTeste {
 	private Sala sala; 
 	private Filme filme;
 	private Sessao sessao;
-	
 	
 	@Before
 	public void CenarioIngresso() {
@@ -31,33 +30,24 @@ public class DescontoTeste {
 	public void naoDeveConcederDescontoParaIngressoNormal() {
 
 		Ingresso ingresso = new Ingresso(sessao, new SemDesconto());
-
 		BigDecimal precoEsperado = new BigDecimal("32.50");
-		System.out.println(ingresso.getPreco());
 		Assert.assertEquals(precoEsperado, ingresso.getPreco());
-
 	}
 	
 	@Test
 	public void DeveConcederDescontode30PorCentoParaIngressosDeClientesBanco() {
 
 		Ingresso ingresso = new Ingresso(sessao, new DescontoParaBancos());
-
 		BigDecimal precoEsperado = new BigDecimal("22.75");
-
 		Assert.assertEquals(precoEsperado, ingresso.getPreco());
-
 	}
 	
 	@Test
 	public void DeveConcederDescontode50PorCentoParaIngressosDeEstudante() {
 
-		Ingresso ingresso = new Ingresso(sessao, new descontoEstudante());
-
+		Ingresso ingresso = new Ingresso(sessao, new DescontoEstudante());
 		BigDecimal precoEsperado = new BigDecimal("16.25");
-
 		Assert.assertEquals(precoEsperado, ingresso.getPreco());
-
 	}
 
 }

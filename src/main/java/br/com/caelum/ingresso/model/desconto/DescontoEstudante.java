@@ -2,7 +2,7 @@ package br.com.caelum.ingresso.model.desconto;
 
 import java.math.BigDecimal;
 
-public class descontoEstudante implements Desconto {
+public class DescontoEstudante implements Desconto {
 
 	private BigDecimal metade = new BigDecimal("2.0");
 
