@@ -18,18 +18,20 @@ public class DescontoTeste {
 	private Sala sala; 
 	private Filme filme;
 	private Sessao sessao;
+	private Lugar lugar;
 	
 	@Before
 	public void CenarioIngresso() {
+		this.lugar = new Lugar("A",1);
 		this.sala = new Sala("Eldorado - Imax", new BigDecimal("20.5"));
 		this.filme = new Filme("Rougue one", Duration.ofMinutes(120), "SCI-FI", new BigDecimal("12.0"));
 		this.sessao = new Sessao(LocalTime.parse("10:00:00"), filme, sala);
+		
 	}	
 	
 	@Test
 	public void naoDeveConcederDescontoParaIngressoNormal() {
-
-		Ingresso ingresso = new Ingresso(sessao, new SemDesconto());
+		Ingresso ingresso = new Ingresso(sessao, TipoDeIngresso.INTEIRO,lugar);
 		BigDecimal precoEsperado = new BigDecimal("32.50");
 		Assert.assertEquals(precoEsperado, ingresso.getPreco());
 	}
@@ -37,7 +39,7 @@ public class DescontoTeste {
 	@Test
 	public void DeveConcederDescontode30PorCentoParaIngressosDeClientesBanco() {
 
-		Ingresso ingresso = new Ingresso(sessao, new DescontoParaBancos());
+		Ingresso ingresso = new Ingresso(sessao, TipoDeIngresso.BANCO,lugar);
 		BigDecimal precoEsperado = new BigDecimal("22.75");
 		Assert.assertEquals(precoEsperado, ingresso.getPreco());
 	}
@@ -45,7 +47,7 @@ public class DescontoTeste {
 	@Test
 	public void DeveConcederDescontode50PorCentoParaIngressosDeEstudante() {
 
-		Ingresso ingresso = new Ingresso(sessao, new DescontoEstudante());
+		Ingresso ingresso = new Ingresso(sessao, TipoDeIngresso.ESTUDANTE,lugar);
 		BigDecimal precoEsperado = new BigDecimal("16.25");
 		Assert.assertEquals(precoEsperado, ingresso.getPreco());
 	}

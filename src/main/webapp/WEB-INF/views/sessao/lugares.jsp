@@ -1,8 +1,8 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: nando
-  Date: 20/01/17
-  Time: 14:24
+  Changed by IntelliJ IDEA.
+  User: Magno
+  Date: 27/05/19
+  Time: 22:38
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -38,7 +38,7 @@
 								<tr>
 								<c:forEach var="lugar" items="${map.value}">
 									<td class="fileira-assento"><figure>
-										<svg class="assento disponivel" id="${lugar.id}"  version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										<svg class="assento ${sessao.isDisponivel(lugar) ? 'disponivel' : 'ocupado' }" onclick ="${sessao.isDisponivel(lugar) ? 'changeCheckbox(this)' : ''}"   version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 318.224 305.246" enable-background="new 0 0 318.224 305.246" xml:space="preserve">
 											<g id="FILL">
 												<path d="M269.395,132.246h-15.02V51.414c0-11.758-9.492-21.248-21.248-21.248H85.097
