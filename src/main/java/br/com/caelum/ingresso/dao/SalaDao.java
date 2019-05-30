@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
- * Created by nando on 03/03/17.
+ * Changed by Magno At 30/05/2019.
  */
 @Repository
 public class SalaDao {
