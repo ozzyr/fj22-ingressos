@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * Created by nando on 03/03/17.
+ * Changed by Magno at 29/05/2019s.
  */
 @Repository
 public class LugarDao {
@@ -18,4 +18,9 @@ public class LugarDao {
     public void save(Lugar lugar) {
         manager.persist(lugar);
     }
+
+    public Lugar findONe(Integer id) {
+    	return manager.find(Lugar.class,id);
+    }
+
 }
