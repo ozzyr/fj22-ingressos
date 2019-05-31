@@ -18,7 +18,7 @@
 	<jpa:repositories base-package="br.com.caelum.ingresso" />
 
 	<context:component-scan base-package="br.com.caelum.ingresso" />
-	<mvc:annotation-driven conversion-service="conversioService"/>
+	<mvc:annotation-driven conversion-service="conversionService"/>
 	<mvc:default-servlet-handler/>
 
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
@@ -26,6 +26,7 @@
 			<set>
 				<bean class="br.com.caelum.ingresso.converter.YearMonthConverter"/>
 			</set>
+		</property>
 	</bean>
 
 
